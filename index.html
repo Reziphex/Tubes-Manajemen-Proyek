@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f2ed">
+  <meta name="description" content="Presentasi interaktif rencana proyek PAB-1: pilot data hall 500 kW, jadwal, biaya, sumber daya, dan risiko.">
+  <title>PAB-1 — Rencana Proyek Terintegrasi</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./motion.css">
+  <link rel="stylesheet" href="./story.css">
+  <script src="./content.js" defer></script>
+  <script src="./motion.js" defer></script>
+  <script src="./story.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#slide">Lewati ke slide</a>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#1" aria-label="Kembali ke sampul"><span class="brand-mark">P<span>1</span></span><span>PAB-1<span class="brand-sub">PROJECT PRESENTATION</span></span></a>
+      <div class="topbar-title">Manajemen Proyek <span>/</span> 2026–2027</div>
+      <div class="toolbar">
+        <button class="tool-button" id="overview-btn" title="Daftar slide (G)"><span data-icon="grid"></span><span class="button-label">Daftar slide</span></button>
+        <button class="tool-button" id="notes-btn" title="Catatan pembicara (N)" aria-pressed="false"><span data-icon="notes"></span><span class="button-label">Catatan</span></button>
+        <button class="tool-button icon-only" id="fullscreen-btn" title="Layar penuh (F)" aria-label="Layar penuh"><span data-icon="expand"></span></button>
+        <button class="primary-button" id="present-btn"><span data-icon="play"></span><span>Presentasikan</span></button>
+      </div>
+    </header>
+    <aside class="sidebar" aria-label="Navigasi bab">
+      <div class="side-label">ALUR PRESENTASI</div>
+      <nav id="chapter-nav"></nav>
+      <div class="sidebar-bottom"><div class="side-rule"></div><span class="side-label">INTEGRATED PROJECT PLAN</span><p>Dari kebutuhan.<br>Ke keputusan.</p><button class="text-button" id="help-btn"><span data-icon="keyboard"></span> Pintasan keyboard</button><div class="academic-note"><span class="status-dot"></span> Studi kasus akademik</div></div>
+    </aside>
+    <main class="workspace">
+      <div class="deck-meta"><span id="chapter-label">00 / PEMBUKA</span><span class="deck-meta-right"><span class="status-dot"></span> PORTS · PIKE TECHNOLOGY CAMPUS</span></div>
+      <div class="stage-wrap">
+        <article id="slide" class="slide" tabindex="-1" aria-label="Slide presentasi"></article>
+        <aside id="notes-panel" class="notes-panel" hidden aria-label="Catatan pembicara">
+          <div class="notes-heading"><span class="eyebrow">CATATAN PEMBICARA</span><button class="icon-button" id="close-notes" aria-label="Tutup catatan"><span data-icon="close"></span></button></div>
+          <div class="speaker-assignment" id="speaker-assignment"></div>
+          <div id="speaker-script"></div>
+          <div class="notes-cue" id="speaker-cue"></div>
+          <div class="next-slide-label">BERIKUTNYA</div><p id="next-title"></p>
+          <button class="outline-button" id="presenter-window-btn"><span data-icon="external"></span> Buka jendela presenter</button>
+          <p class="notes-hint">Pindahkan jendela presenter ke layar laptop. Tampilkan jendela utama di proyektor.</p>
+        </aside>
+      </div>
+      <footer class="deck-controls">
+        <div class="slide-position"><span id="current-number">01</span><span class="slash">/</span><span id="total-number">10</span></div>
+        <div class="progress-track" id="progress-track" role="group" aria-label="Pilih slide"></div>
+        <div class="control-right"><button class="motion-button" id="motion-toggle" title="Animasi aktif (A)" aria-label="Matikan animasi" aria-pressed="true"><span data-icon="spark"></span><span class="motion-label">Animasi</span><span class="motion-state">On</span></button><button class="timer-button" id="timer-btn" title="Mulai atau jeda timer"><span data-icon="clock"></span><time id="timer">00:00</time><span class="timer-state" id="timer-state">Mulai</span></button><button class="icon-button" id="reset-timer" title="Reset timer" aria-label="Reset timer"><span data-icon="reset"></span></button><button class="icon-button exit-present" id="exit-present" title="Keluar presentasi (Esc)" aria-label="Keluar presentasi"><span data-icon="shrink"></span></button><div class="nav-arrows"><button class="arrow-button" id="prev-btn" title="Slide sebelumnya (←)" aria-label="Slide sebelumnya"><span data-icon="left"></span></button><button class="arrow-button next" id="next-btn" title="Slide berikutnya (→)" aria-label="Slide berikutnya"><span data-icon="right"></span></button></div></div>
+      </footer>
+      <div class="under-deck"><button class="text-button" id="source-btn">Sumber & asumsi <span data-icon="external"></span></button><span><kbd>←</kbd> <kbd>→</kbd> slide <span class="hint-dot">·</span> <kbd>N</kbd> catatan <span class="hint-dot">·</span> <kbd>R</kbd> ulang animasi</span></div>
+    </main>
+  </div>
+  <dialog id="overview-dialog" class="overview-dialog"><div class="dialog-heading"><div><span class="eyebrow">PETA PRESENTASI</span><h2>Pilih bagian cerita.</h2></div><button class="icon-button" data-close-dialog aria-label="Tutup daftar slide"><span data-icon="close"></span></button></div><div id="overview-grid" class="overview-grid"></div></dialog>
+  <dialog id="info-dialog" class="info-dialog"><div class="dialog-heading"><h2 id="info-title"></h2><button class="icon-button" data-close-dialog aria-label="Tutup"><span data-icon="close"></span></button></div><div id="info-content"></div></dialog>
+  <div id="live-status" class="sr-only" aria-live="polite"></div>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <noscript><div class="noscript">Aktifkan JavaScript untuk membuka presentasi interaktif PAB-1.</div></noscript>
+</body>
+</html>

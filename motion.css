@@ -1,0 +1,67 @@
+/* Gerakan dekoratif aktif hanya ketika tombol Animasi berada pada posisi On. */
+.motion-button {
+  display:inline-flex; align-items:center; gap:6px; padding:8px 10px;
+  border-radius:7px; margin-right:8px; background:#e1e9dc;
+  color:var(--green); font-size:10px; transition:background .2s;
+}
+.motion-button .icon {width:14px;height:14px}
+.motion-button:hover {background:#d2dfcb}
+.motion-button[aria-pressed=false] {background:#e6e7df;color:var(--muted)}
+.motion-state {font:8px monospace;padding:3px 4px;border-radius:3px;background:#ffffff85}
+.motion-off .tab-content,.motion-off .slide.entering {animation:none!important}
+.motion-on .cover-art > svg {animation:server-float 5.8s ease-in-out infinite}
+.motion-on .cover-art::before {animation:ambient-breathe 7s ease-in-out infinite}
+.motion-on .cover-art circle[r="1.7"] {animation:server-led 3.6s ease-in-out infinite}
+.motion-on .cover-art circle[r="1.7"]:nth-of-type(2n) {animation-delay:-1.2s}
+.motion-on .cover-art circle[r="1.7"]:nth-of-type(3n) {animation-delay:-2.4s}
+.motion-on .data-flow {stroke:#ffd5a0;stroke-width:3;stroke-dasharray:24 130;stroke-linecap:round;fill:none;animation:data-flow 3.4s linear infinite}
+.motion-on .convergence {animation:milestone-emphasis 2s ease-in-out 2}
+.motion-on .risk-point.selected {animation:risk-emphasis 1.8s ease-in-out 2}
+.motion-on .overview-item,.motion-on .capex-item,.motion-on .test-stage,.motion-on .wbs-button {
+  transition:transform .22s ease,background-color .22s ease,border-color .22s ease;
+}
+.motion-on .overview-item:hover {transform:translateX(4px)}
+.motion-on .test-stage:hover,.motion-on .wbs-button:hover {transform:translateY(-2px)}
+.motion-on .progress-step.active::after {
+  content:'';position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(90deg,transparent,#fff9,transparent);
+  animation:progress-shine 1.1s ease-out both;pointer-events:none;
+}
+.progress-step {overflow:visible}
+@keyframes server-float {
+  0%,100% {transform:translateY(0) rotate(-.4deg)}
+  50% {transform:translateY(-10px) rotate(.4deg)}
+}
+@keyframes ambient-breathe {
+  0%,100% {transform:scale(1);border-color:#e8d9c6}
+  50% {transform:scale(1.045);border-color:#d7b78e}
+}
+@keyframes server-led {0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes data-flow {from{stroke-dashoffset:154}to{stroke-dashoffset:0}}
+@keyframes milestone-emphasis {
+  0%,100% {box-shadow:0 0 0 0 #df603a00}
+  50% {box-shadow:0 0 0 5px #df603a25}
+}
+@keyframes risk-emphasis {
+  0%,100% {box-shadow:0 0 0 0 #1e302b00}
+  50% {box-shadow:0 0 0 4px #1e302b28}
+}
+@keyframes progress-shine {from{opacity:0;transform:scaleX(.1)}50%{opacity:.8}to{opacity:0;transform:scaleX(1)}}
+@media(max-width:1100px) {
+  .motion-label {display:none}
+  .motion-button {margin-right:3px;padding:7px}
+}
+@media(max-width:700px) {
+  .motion-button {padding:7px 5px;gap:3px;margin-right:2px}
+  .motion-state {font-size:7px;padding:2px 3px}
+  .deck-controls {gap:9px}
+  .progress-track {min-width:45px}
+  .control-right {flex-shrink:0}
+}
+@media(max-width:390px) {
+  .deck-controls .progress-track {flex-basis:100%;order:3;padding:2px 0 5px}
+}
+@media(prefers-reduced-motion:reduce) {
+  .cover-art svg,.cover-art::before,.data-flow,.convergence,.risk-point {animation:none!important}
+}
+@media print {.motion-button{display:none!important}}

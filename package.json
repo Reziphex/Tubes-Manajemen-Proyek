@@ -1,0 +1,7 @@
+{
+  "name": "pab1-presentasi",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Presentasi web statis rencana proyek PAB-1",
+  "scripts": { "dev": "node server.mjs", "start": "node server.mjs", "check": "node --check app.js && node --check story.js && node --check motion.js && node --check content.js && node --check server.mjs" }
+}
